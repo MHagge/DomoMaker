@@ -1,11 +1,11 @@
 const models = require('../models');
 const Account = models.Account;
 const loginPage = (req, res) => {
-  res.render('login');
+  res.render('login', {csrfToken: req.csrfToken()});
 };
 
 const signupPage = (req, res) => {
-  res.render('signup');
+  res.render('signup', {csrfToken: req.csrfToken()});
 };
 const logout = (req, res) => {
   req.session.destroy();
@@ -75,6 +75,8 @@ const signup = (request, response) => {
     });
   });
 };
+
+
 
 module.exports.loginPage = loginPage;
 module.exports.login = login;
