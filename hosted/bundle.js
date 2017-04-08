@@ -6,6 +6,7 @@ var handleError = function handleError(message) {
 };
 
 var sendAjax = function sendAjax(action, data) {
+  console.dir(data);
   $.ajax({
     cache: false,
     type: "POST",
