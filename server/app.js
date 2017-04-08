@@ -32,6 +32,8 @@ let redisPASS;
 if (process.env.REDISCLOUD_URL) {
   redisURL = url.parse(process.env.REDISCLOUD_URL);
   redisPASS = redisURL.auth.split(':')[1];
+  console.dir(redisURL);
+  console.dir(redisPASS);
 }
 // pull in our routes
 const router = require('./router.js');
@@ -40,7 +42,8 @@ const app = express();
 
 app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted`)));
 app.use(favicon(`${__dirname}/../hosted/img/favicon.png`));
-app.disabled('x-power-by');
+// app.disabled('x-power-by');
+app.disable('x-powered-by');
 app.use(compression());
 app.use(bodyParser.urlencoded({
   extended: true,
@@ -55,7 +58,7 @@ app.use(session({
   secret: 'Domo Arigato',
   resave: true,
   saveUninitialized: true,
-  cookie:{
+  cookie: {
     httpOnly: true,
   },
 }));
@@ -65,8 +68,8 @@ app.set('views', `${__dirname}/../views`);
 app.use(cookieParser());
 
 app.use(csrf());
-app.use((err,req,res,next)=>{
-  if(err.code !== 'EBADCSRFTOKEN') return next(err);
+app.use((err, req, res, next) => {
+  if (err.code !== 'EBADCSRFTOKEN') return next(err);
   console.log('Missing CSRF token');
   return false;
 });
