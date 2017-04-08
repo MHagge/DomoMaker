@@ -32,8 +32,7 @@ let redisPASS;
 if (process.env.REDISCLOUD_URL) {
   redisURL = url.parse(process.env.REDISCLOUD_URL);
   redisPASS = redisURL.auth.split(':')[1];
-  console.dir(redisURL);
-  console.dir(redisPASS);
+
 }
 // pull in our routes
 const router = require('./router.js');
@@ -52,7 +51,7 @@ app.use(session({
   key: 'sessionid',
   store: new RedisStore({
     host: redisURL.hostname,
-    post: redisURL.port,
+    port: redisURL.port,
     pass: redisPASS,
   }),
   secret: 'Domo Arigato',
