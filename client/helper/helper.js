@@ -9,6 +9,9 @@ const redirect = (response) =>{
 };
 
 const sendAjax = (type, action, data, success) =>{
+  
+  console.dir(data);
+  
   $.ajax({
     cache: false,
     type: type,

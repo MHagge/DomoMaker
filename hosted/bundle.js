@@ -43,7 +43,7 @@ var renderDomo = function renderDomo() {
     ),
     React.createElement("input", { id: "domoAge", type: "number", name: "age", placeholder: "Domo Age" }),
     React.createElement("input", { type: "hidden", name: "_csrf", value: this.props.csrf }),
-    React.createElement("input", { className: "nameDomoSubmit", type: "submit", value: "MakeDomo" })
+    React.createElement("input", { className: "makeDomoSubmit", type: "submit", value: "MakeDomo" })
   );
 };
 
@@ -138,6 +138,9 @@ var redirect = function redirect(response) {
 };
 
 var sendAjax = function sendAjax(type, action, data, success) {
+
+  console.dir(data);
+
   $.ajax({
     cache: false,
     type: type,

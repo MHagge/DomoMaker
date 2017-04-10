@@ -32,7 +32,7 @@ const renderDomo = function(){
     <label htmlFor="age">Age: </label>
     <input id="domoAge" type="number" name="age" placeholder="Domo Age" />
     <input type="hidden" name="_csrf" value={this.props.csrf} />
-    <input className="nameDomoSubmit" type="submit" value="MakeDomo" />
+    <input className="makeDomoSubmit" type="submit" value="MakeDomo" />
     </form>
   );
 };
